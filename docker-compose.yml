@@ -1,0 +1,19 @@
+services:
+  
+  nginx:
+    image: nginx:latest
+    container_name: portfolio_site
+    restart: unless-stopped
+    ports:
+      - "8084:8084"
+    volumes:
+      - .:/var/www
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - laravel_network
+
+
+
+networks:
+  laravel_network:
+    external: true
